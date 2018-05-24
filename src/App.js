@@ -59,10 +59,12 @@ class App extends React.Component {
   render() {
     return (
       <div id="container">
-        <aside id="users" className="column">
+        <aside id="users">
+          <img src="/data/yak.png" alt="Yak icon" />
+          <h1>Yet Another Chat App</h1>
           <UserList users={this.state.users} />
         </aside>
-        <main className="column">
+        <main>
           <section id="messages">
             <MessageList messages={this.state.messages} showLastMessage={showLastMessage} />
           </section>

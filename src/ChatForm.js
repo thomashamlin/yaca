@@ -13,8 +13,8 @@ function ChatForm({ onSend }) {
   }
 
   return (
-    <form onSubmit={handleSend}>
-      <input type="text" name="message" />
+    <form onSubmit={handleSend} method="post">
+      <input type="text" name="message" placeholder="Say what's on your mind" autoComplete="off" />
       <button type="submit">Send</button>
     </form>
   );

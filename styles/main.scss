@@ -14,7 +14,7 @@ $message-meta-color: hsl(0, 0, 65%);
 $message-hover-bg-color: hsl(0, 5%, 95%);
 
 // Space between aside on the left and message and chat form on the right
-$column-gutter-width: 1em;
+$column-gutter-width: 0.5em;
 
 
 //------------------
@@ -36,16 +36,9 @@ ul, ol {
   padding: 0;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-}
-
 input {
   border-radius: 4px;
   border: 1px solid $frame-border-color;
-  width: auto;
 }
 
 //------------
@@ -66,16 +59,29 @@ input {
 
   // aside contains user list
   aside {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100px;
+    overflow: auto;
+
     background-color: $frame-bg-color;
     padding: 1em;
 
     // Aside can overflow and be scrolled independently
-    height: 100vd;
+    height: 100%;
     overflow-y: auto;
 
     // narrower than main
     flex-grow: 1;
 
+    img {
+      width: 100px;
+    }
+
+    h1 {
+      font-size: 0.5em;
+      margin-bottom: 2em;
+    }
     #users {
       display: flex;
       flex-direction: column;
@@ -92,35 +98,45 @@ input {
     display: flex;
     flex-direction: column;
 
-    // Push messages to bottom near the chat form (noticable when main is taller than all messages)
-    justify-content: flex-end;
-
     // Message area can overflow and be scrolled independently
-    height: 100vd;
+    height: 100%;
     overflow-y: auto;
 
-    // wider than aside
-    flex-grow: 8;
-
     footer {
-      // Fix to bottom of main
+      // Fix to bottom of main.
+      // I might have been able to achieve this differently and made it easier to get a better
+      // flexible chat form layout below.
       position: absolute;
       bottom: 0;
 
       // Cover other content in `main` seamlessly
-      background-color: $frame-bg-color;
-      border-top: 1px solid $frame-border-color;
-      margin: 0;
+      background-color: $messages-bg-color;
       height: 3em;
       width: 100%;
 
       // Layout contents
       display: flex;
       align-items: center;
+      padding-left: 1em;
 
       // Chat form
       form {
-        padding-left: $column-gutter-width;
+        display: flex;
+        // Approximate the same width as `main`. Because form's container is absolutely positioned,
+        // its width doesn't match main's. This is pretty close but I'd think about different layouts
+        // given more time.
+        width: 80%;
+
+        input {
+          flex: 1 0 20em;
+          font-size: 1em;
+          padding: 0.5em;
+        }
+
+        button {
+          flex: 0 0 4em;
+          font-size: 1em;
+        }
       }
     }
   }
@@ -132,14 +148,14 @@ input {
 //---------------
 
 section#messages {
-  // Allow space for chat form at bottom
-  margin: 0 $column-gutter-width 2em;
+  // bottom-margin allows space for chat form at bottom
+  margin: 0 $column-gutter-width 3em;
 
   // Each message is an LI and contains divs for user, date, and message string.
   li {
     // Padding for hover effect
-    padding: .3em;
-    margin-bottom: 1em;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
 
     // Nicer looking hover effect
     border-radius: 4px;
@@ -153,8 +169,8 @@ section#messages {
       border: 1px solid #ddd;
       border-radius: 8px;
       margin-right: 1em;
-      width: 2em;
-      height: 2em;
+      width: 3em;
+      height: 3em;
       display: block;
       float: left;
       overflow: hidden; // alt text
