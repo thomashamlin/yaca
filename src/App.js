@@ -7,6 +7,11 @@ import { fetchJson } from './dataSources';
 import '../styles/main.scss';
 
 
+function showLastMessage() {
+  const main = document.getElementsByTagName('main')[0];
+  main.scrollTop = main.scrollHeight;
+}
+
 class App extends React.Component {
   constructor() {
     super();
@@ -59,7 +64,7 @@ class App extends React.Component {
         </aside>
         <main className="column">
           <section id="messages">
-            <MessageList messages={this.state.messages} />
+            <MessageList messages={this.state.messages} showLastMessage={showLastMessage} />
           </section>
           <footer>
             <ChatForm onSend={this.handleMessageSend} />

@@ -10,6 +10,14 @@ function byDateAsc(msg1, msg2) {
 
 
 class MessageList extends React.Component {
+  componentDidMount() {
+    this.props.showLastMessage();
+  }
+
+  componentDidUpdate() {
+    this.props.showLastMessage();
+  }
+
   render() {
     const { messages } = this.props;
     const messagesChron = [...messages].sort(byDateAsc);
