@@ -3,7 +3,9 @@ import { Message } from './Message';
 
 
 function byDateAsc(msg1, msg2) {
-  return (msg1.date < msg2.date) ? 1 : -1;
+  const date1 = new Date(msg1.date);
+  const date2 = new Date(msg2.date);
+  return (date1 < date2) ? -1 : 1;
 }
 
 
