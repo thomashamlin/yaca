@@ -1,48 +1,56 @@
 [
   {
     "id": 50,
+    "avatar": "torvalds.jpg",
     "date": "Wed May 21 2018 17:21:09 GMT-0700 (PDT)",
     "name": "Linus Torvalds",
     "message": "Good night all."
   },
   {
     "id": 100,
+    "avatar": "twain.jpeg",
     "date": "Thu May 22 2018 10:41:13 GMT-0700 (PDT)",
     "name": "Mark Twain",
     "message": "The secret of getting ahead is getting started."
   },
   {
     "id": 200,
+    "avatar": "torvalds.jpg",
     "date": "Thu May 22 2018 10:41:22 GMT-0700 (PDT)",
     "name": "Linus Torvalds",
     "message": "Talk is cheap. Show me the code."
   },
   {
     "id": 300,
+    "avatar": "fey.jpeg",
     "date": "Thu May 22 2018 10:42:23 GMT-0700 (PDT)",
     "name": "Tina Fey",
     "message": "You have to let people see what you wrote. It will never be perfect, but perfect is overrated. Perfect is boring."
   },
   {
     "id": 400,
+    "avatar": "twain.jpeg",
     "date": "Thu May 22 2018 10:42:55 GMT-0700 (PDT)",
     "name": "Mark Twain",
     "message": "Very well."
   },
   {
     "id": 500,
+    "avatar": "twain.jpeg",
     "date": "Thu May 22 2018 10:43:49 GMT-0700 (PDT)",
     "name": "Mark Twain",
     "message": "```\nfetch('https://imgs.xkcd.com/comics/operating_systems.png')\n  .then(response => response.json())\n  .then(data => this.setState({ future: data }));\n```So why doesn't that work?"
   },
   {
     "id": 600,
+    "avatar": "crockford.jpg",
     "date": "Thu May 22 2018 10:44:44 GMT-0700 (PDT)",
     "name": "Douglas Crockford",
     "message": "Hmm...\nComputer programs are the most complex things that humans make."
   },
   {
     "id": 700,
+    "avatar": "twain.jpeg",
     "date": "Thu May 22 2018 10:45:59 GMT-0700 (PDT)",
     "name": "Mark Twain",
     "message": "<good_code.png>"

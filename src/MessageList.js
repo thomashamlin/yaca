@@ -16,6 +16,7 @@ class MessageList extends React.Component {
         {messagesChron.map(message => (
           <Message
             key={message.date}
+            avatar={message.avatar}
             date={message.date}
             name={message.name}
             message={message.message}

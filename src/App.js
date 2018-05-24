@@ -42,6 +42,7 @@ class App extends React.Component {
     const msg = {
       // A random ID is good enough for now; used by React `key` so must be unique
       id: Math.floor((Math.random() * 1000) + 1000),
+      avatar: 'unknown.jpeg',
       date: now.toJSON(),
       name: user,
       message: text
