@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MessageList from './MessageList';
 import UserList from './UserList';
 import { fetchJson } from './dataSources';
 import '../styles/main.scss';
@@ -11,11 +12,16 @@ class App extends React.Component {
 
     // Initial state
     this.state = {
+      messages: [],
       users: []
     };
   }
 
   componentDidMount() {
+    // Fetch initial data
+    fetchJson('/data/messages.json', (data) => {
+      this.setState({ messages: data });
+    });
     fetchJson('/data/users.json', (data) => {
       this.setState({ users: data });
     });
@@ -29,6 +35,7 @@ class App extends React.Component {
         </aside>
         <main className="column">
           <section id="messages">
+            <MessageList messages={this.state.messages} />
           </section>
           <footer>
             <form>
