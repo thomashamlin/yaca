@@ -30,12 +30,12 @@ class App extends React.Component {
         <main className="column">
           <section id="messages">
           </section>
-          <section id="chatForm">
+          <footer>
             <form>
               <input type="text" name="message" />
               <button type="submit">Send</button>
             </form>
-          </section>
+          </footer>
         </main>
       </div>
     );

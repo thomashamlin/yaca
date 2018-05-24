@@ -1,14 +1,129 @@
+// For the purposes of this fake chat app, main.scss contains all styles.
+
+
+//----------
+// Variables
+//----------
+
+// Aside and Footer
+$frame-bg-color: hsl(0, 5%, 90%);
+$frame-border-color: darken($frame-bg-color, 5%);
+
+$messages-bg-color: hsl(0, 0, 100%);
+$message-meta-color: hsl(0, 10%, 90%);
+$message-hover-bg-color: hsl(0, 5%, 95%);
+
+// Space between aside on the left and message and chat form on the right
+$column-gutter-width: 1em;
+
+
+//------------------
+// Reset and Generic
+//------------------
+
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    font-family: 'Helvetica', 'Verdana', sans-serif;
-    font-weight: 400;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Helvetica', 'Verdana', sans-serif;
+  font-weight: 400;
 }
 
 ul, ol {
-    list-style: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+input {
+  border-radius: 4px;
+  border: 1px solid $frame-border-color;
+  width: auto;
+}
+
+//------------
+// Main Layout
+//------------
+
+// Contains aside and main
+#container {
+
+  display: flex;
+  // Position this so footer can be positioned
+  position: absolute;
+
+  // Fit to viewport not content
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  // aside contains user list
+  aside {
+    background-color: $frame-bg-color;
+    padding: 1em;
+
+    // Aside can overflow and be scrolled independently
+    height: 100vd;
+    overflow-y: auto;
+
+    // narrower than main
+    flex-grow: 1;
+
+    #users {
+      display: flex;
+      flex-direction: column;
+
+      li {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+
+  // main contains #messages and footer with chat form
+  main {
+    display: flex;
+    flex-direction: column;
+
+    // Push messages to bottom near the chat form (noticable when main is taller than all messages)
+    justify-content: flex-end;
+
+    // Message area can overflow and be scrolled independently
+    height: 100vd;
+    overflow-y: auto;
+
+    // wider than aside
+    flex-grow: 8;
+
+    footer {
+      // Fix to bottom of main
+      position: absolute;
+      bottom: 0;
+
+      // Cover other content in `main` seamlessly
+      background-color: $frame-bg-color;
+      border-top: 1px solid $frame-border-color;
+      margin: 0;
+      height: 3em;
+      width: 100%;
+
+      // Layout contents
+      display: flex;
+      align-items: center;
+
+      // Chat form
+      form {
+        padding-left: $columnGutterWidth;
+      }
+    }
+  }
 }
 
 ul#users {
