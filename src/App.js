@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ChatForm from './ChatForm';
 import MessageList from './MessageList';
 import UserList from './UserList';
 import { fetchJson } from './dataSources';
@@ -15,6 +16,12 @@ class App extends React.Component {
       messages: [],
       users: []
     };
+
+    // Bind `this` to the function's `this` so it isn't changed later.
+    // Otherwise we get "Cannot read property 'setState' of undefined".
+    // bind() returns a fn where `this` always has the value it had when
+    // bind was called.
+    this.handleMessageSend = this.handleMessageSend.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +32,22 @@ class App extends React.Component {
     fetchJson('/data/users.json', (data) => {
       this.setState({ users: data });
     });
+  }
+
+  handleMessageSend(text) {
+    const now = new Date();
+    // This would return current authenticated user
+    const user = '<Current User>';
+    // Build an object representing this chat
+    const msg = {
+      // A random ID is good enough for now; used by React `key` so must be unique
+      id: Math.floor((Math.random() * 1000) + 1000),
+      date: now.toJSON(),
+      name: user,
+      message: text
+    };
+    this.setState(() => ({ messages: [...this.state.messages, msg] }));
+    // A real app would save this to a DB here
   }
 
   render() {
@@ -38,10 +61,7 @@ class App extends React.Component {
             <MessageList messages={this.state.messages} />
           </section>
           <footer>
-            <form>
-              <input type="text" name="message" />
-              <button type="submit">Send</button>
-            </form>
+            <ChatForm onSend={this.handleMessageSend} />
           </footer>
         </main>
       </div>
