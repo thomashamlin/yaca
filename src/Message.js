@@ -7,18 +7,14 @@ function Message({ date, avatar, name, message }) {
   const avatarURL = `/data/${avatar}`;
   return (
     <li>
-      <div className="meta">
-        <img src={avatarURL} alt={name} />
-        <div className="name">
-          {name}
+      <img src={avatarURL} alt={name} />
+      <div className="content">
+        <div className="meta">
+          <div className="name"> {name} </div>
+          <div className="date"> {timeOfDay} </div>
         </div>
-        <div className="date">
-          {timeOfDay}
-        </div>
+        <p> {message} </p>
       </div>
-      <p>
-        {message}
-      </p>
     </li>
   );
 }

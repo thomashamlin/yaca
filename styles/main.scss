@@ -137,47 +137,51 @@ section#messages {
 
   // Each message is an LI and contains divs for user, date, and message string.
   li {
-    display: flex;
-    flex-direction: column;
     // Padding for hover effect
     padding: .3em;
     margin-bottom: 1em;
 
     // Nicer looking hover effect
     border-radius: 4px;
-  }
 
-  li:hover {
-    background-color: $message-hover-bg-color;
-    transition: .15s linear background-color;
-  }
+    &:hover {
+      background-color: $message-hover-bg-color;
+      transition: .15s linear background-color;
+    }
 
-  // Contains user name and date
-  .meta {
-    display: flex;
-    color: $message-meta-color;
-  }
+    img {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-right: 1em;
+      width: 2em;
+      height: 2em;
+      display: block;
+      float: left;
+      overflow: hidden; // alt text
+    }
 
-  .name {
-    font-weight: bold;
-  }
+    .content {
+      display: flex;
+      flex-direction: column;
 
-  .date {
-    margin-left: auto;
-  }
+      // Contains user name and date
+      .meta {
+        display: flex;
+        color: $message-meta-color;
+      }
 
-  p {
-    margin: 0;
-    padding-top: 0.2em;
-  }
+      .name {
+        font-weight: bold;
+      }
 
-  img {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-right: 1em;
-    width: 2em;
-    height: 2em;
-    display: block;
-    overflow: hidden; // alt text
+      .date {
+        margin-left: auto;
+      }
+
+      p {
+        margin: 0;
+        padding-top: 0.2em;
+      }
+    }
   }
 }
