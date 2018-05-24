@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import UserList from './UserList';
 import { fetchJson } from './dataSources';
+import '../styles/main.scss';
 
 
 class App extends React.Component {
